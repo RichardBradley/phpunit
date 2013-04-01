@@ -824,6 +824,8 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
                 foreach ($filterConfiguration['whitelist']['exclude']['file'] as $file) {
                     $this->codeCoverageFilter->removeFileFromWhitelist($file);
                 }
+
+                $this->codeCoverageFilter->setExcludeCommits($filterConfiguration['excludeCommits']);
             }
         }
 

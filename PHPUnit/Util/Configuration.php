@@ -271,6 +271,11 @@ class PHPUnit_Util_Configuration
             }
         }
 
+        $excludeCommits = array();
+        foreach ($this->xpath->query('filter/excludeCommits/commit') as $commit) {
+            $excludeCommits[] = (string)$commit->nodeValue;
+        }
+
         return array(
           'blacklist' => array(
             'include' => array(
@@ -309,7 +314,8 @@ class PHPUnit_Util_Configuration
                 'filter/whitelist/exclude/file'
               )
             )
-          )
+          ),
+          'excludeCommits' => $excludeCommits
         );
     }
 
